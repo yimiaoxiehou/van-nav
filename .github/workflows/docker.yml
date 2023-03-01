@@ -1,6 +1,7 @@
 name: DockerBuild And Deploy
 
 on:
+  workflow_dispatch: # on button click
   push:
     tags:
       - 'v*'
