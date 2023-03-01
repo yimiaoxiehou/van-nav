@@ -5,8 +5,9 @@ COPY . .
 RUN cd /app && cd ui/admin && yarn && yarn build && cd ../..
 RUN cd ui/website && yarn && yarn build && cd ../..
 RUN cd /app && mkdir -p public/admin
-RUN cp -r ui/website/build/* public/
-RUN cp -r ui/admin/dist/* public/admin/
+RUN mkdir -p public/nav
+RUN cp -r ui/website/build/* public/nav/
+RUN cp -r ui/admin/dist/* public/nav/admin/
 RUN sed -i 's/\/assets/\/admin\/assets/g' public/admin/index.html
 
 
