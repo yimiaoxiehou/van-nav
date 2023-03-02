@@ -329,7 +329,7 @@ func main() {
 	// router.StaticFS("/",http.FS(fs))
 
 	router.GET("/manifest.json", ManifastHanlder)
-	router.Use(static.Serve("/", BinaryFileSystem(fs, "public")))
+	router.Use(static.Serve("/nav/", BinaryFileSystem(fs, "public")))
 	// router.Use(static.Serve("/", static.LocalFile("./public", true)))
 	api := router.Group("/api")
 	{
