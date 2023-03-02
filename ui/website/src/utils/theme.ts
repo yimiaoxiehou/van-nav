@@ -38,11 +38,11 @@ export const applyTheme = (t: string, source: string, disableLog: boolean) => {
 };
 export const initTheme = () => {
   if (typeof localStorage == "undefined") {
-    return "auto";
+    return "light";
   }
   // 2种情况： 1. 自动。 2.手动
-  if (!("theme" in localStorage) || localStorage.theme === "auto") {
-    return "auto";
+  if (!("theme" in localStorage) || localStorage.theme === "light") {
+    return "light";
   } else {
     if (localStorage.theme === "dark") {
       return "dark";
