@@ -31,15 +31,11 @@ jobs:
         name: get image name
         run: |
           VERSION=$(cat ./version.txt)
-          DOCKER_IMAGE_NAME=$(echo "docker.io/mereith/van-nav:v${VERSION}")
-          ALI_IMAGE_NAME=$(echo "registry.cn-beijing.aliyuncs.com/mereith/van-nav:v${VERSION}")
-          DOCKER_IMAGE_NAME_LATEST=$(echo "docker.io/mereith/van-nav:latest")
-          ALI_IMAGE_NAME_LATEST=$(echo "registry.cn-beijing.aliyuncs.com/mereith/van-nav:latest")
+          DOCKER_IMAGE_NAME=$(echo "docker.io/yimiaoxiehou/van-nav:v${VERSION}")
+          DOCKER_IMAGE_NAME_LATEST=$(echo "docker.io/yimiaoxiehou/van-nav:latest")
           echo ${VERSION}
           echo "::set-output name=DOCKER_IMAGE_NAME::$DOCKER_IMAGE_NAME"
-          echo "::set-output name=ALI_IMAGE_NAME::$ALI_IMAGE_NAME"
           echo "::set-output name=DOCKER_IMAGE_NAME_LATEST::$DOCKER_IMAGE_NAME_LATEST"
-          echo "::set-output name=ALI_IMAGE_NAME_LATEST::$ALI_IMAGE_NAME_LATEST"
         id: image-name
       - name: Build image And Push
         uses: docker/build-push-action@v2
@@ -50,6 +46,4 @@ jobs:
           push: true
           tags: |
             ${{ steps.image-name.outputs.DOCKER_IMAGE_NAME }}
-            ${{ steps.image-name.outputs.ALI_IMAGE_NAME }}
             ${{ steps.image-name.outputs.DOCKER_IMAGE_NAME_LATEST }}
-            ${{ steps.image-name.outputs.ALI_IMAGE_NAME_LATEST }}
