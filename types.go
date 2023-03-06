@@ -45,29 +45,35 @@ type updateUserDto struct {
 }
 
 type Tool struct {
-	Id      int    `json:"id"`
-	Name    string `json:"name"`
-	Url     string `json:"url"`
-	Logo    string `json:"logo"`
-	Catelog string `json:"catelog"`
-	Desc    string `json:"desc"`
+	Id       int    `json:"id"`
+	Name     string `json:"name"`
+	Url      string `json:"url"`
+	Logo     string `json:"logo"`
+	Catelog  string `json:"catelog"`
+	Desc     string `json:"desc"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
 type addToolDto struct {
-	Name    string `json:"name"`
-	Url     string `json:"url"`
-	Logo    string `json:"logo"`
-	Catelog string `json:"catelog"`
-	Desc    string `json:"desc"`
+	Name     string `json:"name"`
+	Url      string `json:"url"`
+	Logo     string `json:"logo"`
+	Catelog  string `json:"catelog"`
+	Desc     string `json:"desc"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 
 type updateToolDto struct {
-	Id      int    `json:"id"`
-	Name    string `json:"name"`
-	Url     string `json:"url"`
-	Logo    string `json:"logo"`
-	Catelog string `json:"catelog"`
-	Desc    string `json:"desc"`
+	Id       int    `json:"id"`
+	Name     string `json:"name"`
+	Url      string `json:"url"`
+	Logo     string `json:"logo"`
+	Catelog  string `json:"catelog"`
+	Desc     string `json:"desc"`
+	Username string `json:"username"`
+	Password string `json:"password"`
 }
 type updateCatelogDto struct {
 	Id   int    `json:"id"`

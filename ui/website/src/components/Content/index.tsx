@@ -105,6 +105,8 @@ const Content = (props: any) => {
           logo={item.logo}
           key={item.id}
           catelog={item.catelog}
+          username={item.username}
+          password={item.password}
           onClick={() => {
             resetSearch();
           }}

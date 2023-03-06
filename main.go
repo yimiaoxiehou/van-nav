@@ -129,12 +129,12 @@ func updateTool(data updateToolDto, db *sql.DB) {
 	// 除了更新工具本身之外，也要更新 img 表
 	sql_update_tool := `
 		UPDATE nav_table
-		SET name = ?, url = ?, logo = ?, catelog = ?, desc = ?
+		SET name = ?, url = ?, logo = ?, catelog = ?, desc = ?, username = ?, password = ?
 		WHERE id = ?;
 		`
 	stmt, err := db.Prepare(sql_update_tool)
 	checkErr(err)
-	res, err := stmt.Exec(data.Name, data.Url, data.Logo, data.Catelog, data.Desc, data.Id)
+	res, err := stmt.Exec(data.Name, data.Url, data.Logo, data.Catelog, data.Desc, data.Id, data.Username, data.Password)
 	checkErr(err)
 	_, err = res.RowsAffected()
 	checkErr(err)
@@ -214,12 +214,12 @@ func addCatelog(data addCatelogDto, db *sql.DB) {
 
 func addTool(data addToolDto, db *sql.DB) int64 {
 	sql_add_tool := `
-		INSERT INTO nav_table (name, url, logo, catelog, desc)
-		VALUES (?, ?, ?, ?, ?);
+		INSERT INTO nav_table (name, url, logo, catelog, desc, username, password)
+		VALUES (?, ?, ?, ?, ?, ?, ?);
 		`
 	stmt, err := db.Prepare(sql_add_tool)
 	checkErr(err)
-	res, err := stmt.Exec(data.Name, data.Url, data.Logo, data.Catelog, data.Desc)
+	res, err := stmt.Exec(data.Name, data.Url, data.Logo, data.Catelog, data.Desc, data.Username, data.Password)
 	checkErr(err)
 	id, err := res.LastInsertId()
 	checkErr(err)
@@ -237,7 +237,7 @@ func getAllTool(db *sql.DB) []Tool {
 	checkErr(err)
 	for rows.Next() {
 		var tool Tool
-		err = rows.Scan(&tool.Id, &tool.Name, &tool.Url, &tool.Logo, &tool.Catelog, &tool.Desc)
+		err = rows.Scan(&tool.Id, &tool.Name, &tool.Url, &tool.Logo, &tool.Catelog, &tool.Desc, &tool.Username, &tool.Password)
 		checkErr(err)
 		results = append(results, tool)
 	}
@@ -329,7 +329,7 @@ func main() {
 	// router.StaticFS("/",http.FS(fs))
 
 	router.GET("/manifest.json", ManifastHanlder)
-	router.Use(static.Serve("/nav/", BinaryFileSystem(fs, "public")))
+	router.Use(static.Serve("/", BinaryFileSystem(fs, "public")))
 	// router.Use(static.Serve("/", static.LocalFile("./public", true)))
 	api := router.Group("/api")
 	{
@@ -377,12 +377,12 @@ func importTools(data []Tool) {
 			catelogs = append(catelogs, v.Catelog)
 		}
 		sql_add_tool := `
-			INSERT INTO nav_table (id, name, catelog, url, logo, desc)
-			VALUES (?, ?, ?, ?, ?, ?);
+			INSERT INTO nav_table (id, name, catelog, url, logo, desc, username, password)
+			VALUES (?, ?, ?, ?, ?, ?, ?, ?);
 			`
 		stmt, err := db.Prepare(sql_add_tool)
 		checkErr(err)
-		res, err := stmt.Exec(v.Id, v.Name, v.Catelog, v.Url, v.Logo, v.Desc)
+		res, err := stmt.Exec(v.Id, v.Name, v.Catelog, v.Url, v.Logo, v.Desc, v.Username, v.Password)
 		checkErr(err)
 		_, err = res.LastInsertId()
 		checkErr(err)

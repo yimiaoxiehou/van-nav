@@ -51,7 +51,9 @@ func initDB() {
 			url TEXT,
 			logo TEXT,
 			catelog TEXT,
-			desc TEXT
+			desc TEXT,
+			username TEXT,
+			password TEXT
 		);
 		`
 	_, err = db.Exec(sql_create_table)

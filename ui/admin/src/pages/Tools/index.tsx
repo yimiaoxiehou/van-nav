@@ -304,6 +304,8 @@ export const Tools: React.FC<ToolsProps> = (props) => {
             }}
           />
           <Table.Column title="网址" dataIndex="url" width={100} />
+          <Table.Column title="用户" dataIndex="username" width={50} />
+          <Table.Column title="密码" dataIndex="password" width={50} />
           <Table.Column
             title="操作"
             width={40}
@@ -382,13 +384,29 @@ export const Tools: React.FC<ToolsProps> = (props) => {
               />
             </Form.Item>
             <Form.Item
-              rules={[{ required: true, message: "请填写描述" }]}
-              name="desc"
-              required
-              label="描述"
-              labelCol={{ span: 4 }}
+                rules={[{ required: true, message: "请填写描述" }]}
+                name="desc"
+                required
+                label="描述"
+                labelCol={{ span: 4 }}
             >
               <Input placeholder="请输入描述" />
+            </Form.Item>
+            <Form.Item
+                rules={[{ required: false, message: "请填写用户名" }]}
+                name="username"
+                label="用户名"
+                labelCol={{ span: 4 }}
+            >
+              <Input placeholder="请输入用户名" />
+            </Form.Item>
+            <Form.Item
+                rules={[{ required: false, message: "请填写密码" }]}
+                name="password"
+                label="密码"
+                labelCol={{ span: 4 }}
+            >
+              <Input placeholder="请输入密码" />
             </Form.Item>
           </Form>
         </Spin>
@@ -431,6 +449,12 @@ export const Tools: React.FC<ToolsProps> = (props) => {
             </Form.Item>
             <Form.Item name="desc" required label="描述" labelCol={{ span: 4 }}>
               <Input placeholder="请输入描述" />
+            </Form.Item>
+            <Form.Item name="username" label="用户名" labelCol={{ span: 4 }}>
+              <Input placeholder="请输入用户名" />
+            </Form.Item>
+            <Form.Item name="password" label="密码" labelCol={{ span: 4 }}>
+              <Input placeholder="请输入密码" />
             </Form.Item>
           </Form>
         </Spin>
