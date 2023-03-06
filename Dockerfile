@@ -14,7 +14,7 @@ RUN apk --no-cache --no-progress add  git
 WORKDIR /app
 COPY . .
 COPY --from=feBuilder /app/public /app/public
-RUN cd /app && ls -la && go mod tidy && go build .
+RUN cd /app && ls -la && go mod tidy && CGO_ENABLED=0 go build .
 
 
 
