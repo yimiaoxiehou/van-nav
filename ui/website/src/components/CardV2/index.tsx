@@ -50,10 +50,10 @@ const Card = ({title, url, des, logo, catelog, username, password, onClick}) => 
                 </div>
             </a>
             <div className="card-content" style={{height: '35px'}}>
-                    <p className="card-right-bottom" style={{width: '45%'}} onClick={() => handlerCopy(username, "用户复制成功")}>
+                    <p className="card-right-bottom" style={{width: '45%'}} onClick={() => username !== undefined && username!=="" && handlerCopy(username, "用户复制成功")}>
                         用户：{username}
                     </p>
-                    <p className="card-right-bottom" style={{width: '53%', marginLeft: '2%'}} onClick={() => handlerCopy(password, "密码复制成功")}>
+                    <p className="card-right-bottom" style={{width: '53%', marginLeft: '2%'}} onClick={() => password !== undefined && password !== "" && handlerCopy(password, "密码复制成功")}>
                         密码：{password}
                     </p>
             </div>
