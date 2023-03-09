@@ -1,5 +1,7 @@
 package main
 
+import "database/sql"
+
 type loginDto struct {
 	Name     string `json:"name"`
 	Password string `json:"password"`
@@ -45,35 +47,35 @@ type updateUserDto struct {
 }
 
 type Tool struct {
-	Id       int    `json:"id"`
-	Name     string `json:"name"`
-	Url      string `json:"url"`
-	Logo     string `json:"logo"`
-	Catelog  string `json:"catelog"`
-	Desc     string `json:"desc"`
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Id       int            `json:"id"`
+	Name     string         `json:"name"`
+	Url      string         `json:"url"`
+	Logo     string         `json:"logo"`
+	Catelog  string         `json:"catelog"`
+	Desc     string         `json:"desc"`
+	Username sql.NullString `json:"username"`
+	Password sql.NullString `json:"password"`
 }
 
 type addToolDto struct {
-	Name     string `json:"name"`
-	Url      string `json:"url"`
-	Logo     string `json:"logo"`
-	Catelog  string `json:"catelog"`
-	Desc     string `json:"desc"`
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Name     string         `json:"name"`
+	Url      string         `json:"url"`
+	Logo     string         `json:"logo"`
+	Catelog  string         `json:"catelog"`
+	Desc     string         `json:"desc"`
+	Username sql.NullString `json:"username"`
+	Password sql.NullString `json:"password"`
 }
 
 type updateToolDto struct {
-	Id       int    `json:"id"`
-	Name     string `json:"name"`
-	Url      string `json:"url"`
-	Logo     string `json:"logo"`
-	Catelog  string `json:"catelog"`
-	Desc     string `json:"desc"`
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Id       int            `json:"id"`
+	Name     string         `json:"name"`
+	Url      string         `json:"url"`
+	Logo     string         `json:"logo"`
+	Catelog  string         `json:"catelog"`
+	Desc     string         `json:"desc"`
+	Username sql.NullString `json:"username"`
+	Password sql.NullString `json:"password"`
 }
 type updateCatelogDto struct {
 	Id   int    `json:"id"`
