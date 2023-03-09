@@ -134,7 +134,7 @@ func updateTool(data updateToolDto, db *sql.DB) {
 		`
 	stmt, err := db.Prepare(sql_update_tool)
 	checkErr(err)
-	res, err := stmt.Exec(data.Name, data.Url, data.Logo, data.Catelog, data.Desc, data.Id, data.Username, data.Password)
+	res, err := stmt.Exec(data.Name, data.Url, data.Logo, data.Catelog, data.Desc, data.Username, data.Password, data.Id)
 	checkErr(err)
 	_, err = res.RowsAffected()
 	checkErr(err)
