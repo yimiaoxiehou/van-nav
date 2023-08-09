@@ -12,6 +12,6 @@ export default defineConfig({
       },
     },
     port: 6411,
-    base: '/admin/'
-  }
+  },
+  base: '/admin/'
 })
