@@ -25,7 +25,7 @@ import {
 import "./index.css";
 export interface ToolsProps {}
 export const Tools: React.FC<ToolsProps> = (props) => {
-  const { store, setStore, reload, loading } = useContext(GlobalContext);
+  const { store, reload, loading } = useContext(GlobalContext);
   const [showEdit, setShowEdit] = useState(false);
   const [requestLoading, setRequestLoading] = useState(false);
   const [showAddModel, setShowAddModel] = useState(false);
